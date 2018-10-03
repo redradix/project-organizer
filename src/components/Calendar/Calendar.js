@@ -1,8 +1,8 @@
 import React from "react";
-// import { connect } from "react-redux";
-import { withProps, compose, lifecycle } from "recompose";
+import { connect } from "react-redux";
+import { compose, lifecycle } from "recompose";
 
-// import getEvents from '../../redux/actions/getEvents';
+import getEvents from '../../redux/actions/getEvents';
 
 // FullCalendar Libs
 import $ from "jquery";
@@ -20,51 +20,55 @@ const Calendar = props => (
   </div>
 );
 
-const putProps = withProps({
-  events: [],
-});
+const createCalendar = () => {
+  $("#calendar").fullCalendar({
+    locale: "es",
+    themeSystem: "standard",
+    customButtons: {
+      crearProyecto: {
+        text: "Crear Proyecto",
+        click: function() {
+          alert("Crear Projecto!");
+        }
+      },
+      crearAsignacion: {
+        text: "Crear Asignacion",
+        click: function() {
+          alert("Crear Asignacion!");
+        }
+      }
+    },
+    header: {
+      left: "prev,next today",
+      center: "title",
+      right: "crearProyecto, crearAsignacion"
+    },
+    eventClick: function(calEvent) {
+      alert('Event: ' + calEvent.title);
+    }
+  });
+}
 
 const putLifeCycle = lifecycle({
   componentDidMount() {
-    $("#calendar").fullCalendar({
-      locale: "es",
-      themeSystem: "standard",
-      customButtons: {
-        crearProyecto: {
-          text: "Crear Proyecto",
-          click: function() {
-            alert("Crear Projecto!");
-          }
-        },
-        crearAsignacion: {
-          text: "Crear Asignacion",
-          click: function() {
-            alert("Crear Asignacion!");
-          }
-        }
-      },
-      header: {
-        left: "prev,next today",
-        center: "title",
-        right: "crearProyecto, crearAsignacion"
-      },
-      events: this.props.events,
-      eventClick: function(calEvent) {
-        alert('Event: ' + calEvent.title);
-      }
-    });
+    this.props.initEvents();
+    createCalendar();
+  },
+  componentDidUpdate() {
+    $("#calendar").fullCalendar('removeEvents');
+    $("#calendar").fullCalendar('addEventSource', this.props.events)
   }
 });
 
-// const mapStateToProps = ({events}) => ({events});
+const mapStateToProps = ({events}) => ({events});
 
-// const mapDispatchToProps = dispatch => ({
-//   initEvents() {
-//     dispatch(getEvents());
-//   }
-// })
+const mapDispatchToProps = dispatch => ({
+  initEvents() {
+    dispatch(getEvents());
+  }
+})
 
 export default compose(
-  putProps,
+  connect(mapStateToProps, mapDispatchToProps),
   putLifeCycle
 )(Calendar);
