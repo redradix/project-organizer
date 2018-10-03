@@ -44,6 +44,7 @@ const mapDispatchToProps = {
 const submitHandler = withHandlers({
   onSubmit: props => (values, actions) => {
     props.addProject(values);
+    actions.resetForm({});
     actions.setSubmitting(false);
   }
 });
