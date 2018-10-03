@@ -1,9 +1,9 @@
 export default function(state = [], action) {
   switch (action.type) {
     case "INIT_EVENTS":
-    return [ ...state, ...action.events ];
+      return [...action.events];
     case "ADD_EVENT":
-      return [ ...state, action.event ];
+      return [...state, action.event];
     case "REMOVE_EVENT":
       return state.events.filter(event => event.title !== action.event.title);
     default:

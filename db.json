@@ -1,6 +1,41 @@
 {
-  "projects": [],
+  "projects": [
+    {
+      "projectName": "ECommece Hugo",
+      "client": "Hugo Boss",
+      "budget": 1000,
+      "designTime": 10,
+      "developmentSprints": 10,
+      "id": 1
+    }
+  ],
   "assignments": [],
+  "employees": [
+    "Alex",
+    "Alvaro",
+    "Arturo",
+    "Carlos",
+    "Chema",
+    "Cynthia",
+    "David",
+    "Dani",
+    "Diana",
+    "Helio",
+    "Isa",
+    "Jacobo",
+    "Juan",
+    "Luis",
+    "Miguel",
+    "Patri",
+    "Victor",
+    "Aaron",
+    "Cristian",
+    "Elias",
+    "Fran",
+    "Nacho",
+    "Sara",
+    "Yaiza"
+  ],
   "events": [
     {
       "title": "event1",

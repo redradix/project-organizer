@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { compose, lifecycle } from "recompose";
+import { withRouter } from "react-router-dom";
 
-import getEvents from '../../redux/actions/getEvents';
+import getEvents from "../../redux/actions/events/getEvents";
 
 // FullCalendar Libs
 import $ from "jquery";
@@ -20,21 +21,21 @@ const Calendar = props => (
   </div>
 );
 
-const createCalendar = () => {
+const createCalendar = props => {
   $("#calendar").fullCalendar({
     locale: "es",
     themeSystem: "standard",
     customButtons: {
       crearProyecto: {
         text: "Crear Proyecto",
-        click: function() {
-          alert("Crear Projecto!");
+        click: () => {
+          props.history.push("/projects");
         }
       },
       crearAsignacion: {
         text: "Crear Asignacion",
-        click: function() {
-          alert("Crear Asignacion!");
+        click: () => {
+          props.history.push("/assignments");
         }
       }
     },
@@ -44,31 +45,33 @@ const createCalendar = () => {
       right: "crearProyecto, crearAsignacion"
     },
     eventClick: function(calEvent) {
-      alert('Event: ' + calEvent.title);
+      alert("Event: " + calEvent.title);
     }
   });
-}
+};
 
 const putLifeCycle = lifecycle({
   componentDidMount() {
-    this.props.initEvents();
-    createCalendar();
+    this.props.getEvents();
+    createCalendar(this.props);
   },
   componentDidUpdate() {
-    $("#calendar").fullCalendar('removeEvents');
-    $("#calendar").fullCalendar('addEventSource', this.props.events)
+    $("#calendar").fullCalendar("removeEvents");
+    $("#calendar").fullCalendar("addEventSource", this.props.events);
   }
 });
 
-const mapStateToProps = ({events}) => ({events});
+const mapStateToProps = ({ events }) => ({ events });
 
-const mapDispatchToProps = dispatch => ({
-  initEvents() {
-    dispatch(getEvents());
-  }
-})
+const mapDispatchToProps = {
+  getEvents
+};
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   putLifeCycle
 )(Calendar);

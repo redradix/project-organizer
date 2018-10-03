@@ -11,6 +11,7 @@
     "react-dom": "^16.5.2",
     "react-event-calendar": "^0.3.0",
     "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.3",
     "recompose": "^0.30.0",
     "redux": "^4.0.0",
@@ -21,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start-backend": "json-server --watch db.json"
+    "start-backend": "json-server --watch db.json --port 5000"
   },
   "eslintConfig": {
     "extends": "react-app"

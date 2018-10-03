@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3000";
+const baseURL = "http://localhost:5000";
 
 const getFromAPI = concept => axios.get(`${baseURL}/${concept}`);
 
@@ -9,4 +9,13 @@ const createAssignment = assignment =>
   axios.post(`${baseURL}/assignments`, assignment);
 const createEvent = event => axios.post(`${baseURL}/events`, event);
 
-export { getFromAPI, createProject, createAssignment, createEvent };
+const removeProjectFromDB = projectId =>
+  axios.delete(`${baseURL}/projects/${projectId}`);
+
+export {
+  getFromAPI,
+  createProject,
+  createAssignment,
+  createEvent,
+  removeProjectFromDB
+};

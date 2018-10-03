@@ -1,5 +1,5 @@
 import initEvents from "./initEvents";
-import { getFromAPI } from "../../api";
+import { getFromAPI } from "../../../api";
 
 export default function getEvents() {
   return function(dispatch) {
