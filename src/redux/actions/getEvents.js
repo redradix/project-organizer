@@ -1,11 +1,10 @@
-import axios from "axios";
-import initEvents from './initEvents';
+import initEvents from "./initEvents";
+import { getFromAPI } from "../../api";
 
 export default function getEvents() {
-    return function (dispatch, getState) {
-        axios.get('/api/events')
-        .then(({data}) => {
-            dispatch(initEvents(data.events))
-        })
-    }
+  return function(dispatch) {
+    getFromAPI("events").then(({ data }) => {
+      dispatch(initEvents(data));
+    });
+  };
 }
