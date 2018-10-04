@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import ProjectForm from "./ProjectForm";
-import ProjectList from "./ProjectList";
+import ProjectForm from "./ProjectForm/ProjectForm";
+import ProjectList from "./ProjectList/ProjectList";
 import { compose, lifecycle } from "recompose";
 import getProjects from "../../redux/actions/projects/getProjects";
 

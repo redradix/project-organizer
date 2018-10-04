@@ -42,8 +42,8 @@ const createCalendar = props => {
       center: "title",
       right: "crearProyecto, crearAsignacion"
     },
-    eventClick: function(calEvent) {
-      alert("Event: " + calEvent.title);
+    eventClick: calEvent => {
+      props.history.push(`/event/${calEvent.id}`);
     }
   });
 };

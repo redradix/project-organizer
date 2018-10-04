@@ -1,0 +1,50 @@
+import React from "react";
+import { compose } from "recompose";
+import withEvents from "../HOCs/withEvents";
+import withSelectedEvent from "../HOCs/withSelectedEvent";
+import { Link } from "react-router-dom";
+import EditAssignmentForm from "../Assignments/AssignmentForm/EditAssignmentForm/EditAssignmentForm";
+import moment from "moment";
+
+const EventDetails = props => (
+  <React.Fragment>
+    <Link to="/">Calendario</Link>
+    {props.event ? (
+      <React.Fragment>
+        <h2>{props.event.title}</h2>
+        <p>Empleado: {props.event.employee}</p>
+        <p>Proyecto: {props.event.project}</p>
+        <p>Fecha Inicio: {props.event.start}</p>
+        <p>Fecha Fin: {props.event.end}</p>
+        <p>Porcentaje Dedicacion: {props.event.dedicationPercentage}</p>
+
+        <EditAssignmentForm
+          events={props.events}
+          initialValues={buildInitialValues(props.event)}
+        />
+      </React.Fragment>
+    ) : null}
+  </React.Fragment>
+);
+
+const buildInitialValues = event => {
+  const { start, end, employee, project, dedicationPercentage, id } = event;
+
+  const toDate = moment(end)
+    .subtract(1, "days")
+    .format("YYYY-MM-DD");
+
+  return {
+    id,
+    employee,
+    project,
+    dedicationPercentage,
+    fromDate: start,
+    toDate
+  };
+};
+
+export default compose(
+  withEvents,
+  withSelectedEvent
+)(EventDetails);

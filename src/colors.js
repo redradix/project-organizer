@@ -9,4 +9,8 @@ const colors = [
   "#388e3c"
 ];
 
-export default colors;
+const getRandomColor = () => {
+  return colors[Math.floor(Math.random() * colors.length) + 0];
+};
+
+export default getRandomColor;

@@ -13,11 +13,9 @@ const formatEvent = async event => {
     end: end.format("YYYY-MM-DD"),
     backgroundColor: color,
     borderColor: color,
-    extra: {
-      employee,
-      project,
-      dedicationPercentage
-    }
+    employee,
+    project,
+    dedicationPercentage
   };
 };
 

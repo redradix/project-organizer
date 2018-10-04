@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import { withHandlers, compose } from "recompose";
-import { addProject } from "../../../redux/actions/projects";
-import colors from "../../../colors";
+import addProject from "../../../redux/actions/projects/addProject";
+import getRandomColor from "../../../colors";
 
 const ProjectForm = props => (
   <React.Fragment>
@@ -48,10 +48,6 @@ const submitHandler = props => (values, actions) => {
     actions.resetForm({});
     actions.setSubmitting(false);
   });
-};
-
-const getRandomColor = () => {
-  return colors[Math.floor(Math.random() * colors.length) + 1];
 };
 
 export default compose(

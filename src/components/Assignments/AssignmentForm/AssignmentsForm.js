@@ -1,25 +1,20 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import CustomSelect from "./CustomSelect";
-import withEmployees from "../../HOCs/withEmployees";
-import withProjects from "../../HOCs/withProjects";
-import { compose, withHandlers } from "recompose";
-import addEvent from "../../../redux/actions/events/addEvent";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import CustomSelect from "./CustomSelect/CustomSelect";
 
-const AssignmentsForm = props => (
+const AssignmentForm = props => (
   <React.Fragment>
-    <h2>Crear Asignaciones</h2>
+    <h2>{props.title}</h2>
 
-    <Formik onSubmit={props.onSubmit}>
-      {({ isSubmitting, handleChange }) => (
+    <Formik onSubmit={props.onSubmit} initialValues={props.initialValues}>
+      {({ isSubmitting, handleChange, values }) => (
         <Form>
           Empleado:
           <CustomSelect
             selectName="employee"
             changeHandler={handleChange}
             items={props.employees}
+            value={values.employee}
           />
           <br />
           Proyecto:
@@ -27,6 +22,7 @@ const AssignmentsForm = props => (
             selectName="project"
             changeHandler={handleChange}
             items={props.projects.map(p => p.projectName)}
+            value={values.project}
           />
           <br />
           Desde:
@@ -38,6 +34,14 @@ const AssignmentsForm = props => (
           Porcentaje de decicacion:
           <Field type="number" name="dedicationPercentage" />
           <br />
+          {props.initialValues ? (
+            <input
+              type="hidden"
+              name="id"
+              value={props.initialValues.id}
+              changeHandler={handleChange}
+            />
+          ) : null}
           <button type="submit" disabled={isSubmitting}>
             Crear
           </button>
@@ -47,25 +51,4 @@ const AssignmentsForm = props => (
   </React.Fragment>
 );
 
-const mapStateToProps = ({ projects }) => ({ projects });
-
-const mapDispatchToProps = {
-  addEvent
-};
-
-const submitHandler = props => (values, actions) => {
-  props.addEvent(values).then(() => {
-    props.history.push("/");
-  });
-};
-
-export default compose(
-  withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
-  withHandlers({ onSubmit: submitHandler }),
-  withEmployees,
-  withProjects
-)(AssignmentsForm);
+export default AssignmentForm;
