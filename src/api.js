@@ -12,10 +12,14 @@ const createEvent = event => axios.post(`${baseURL}/events`, event);
 const removeProjectFromDB = projectId =>
   axios.delete(`${baseURL}/projects/${projectId}`);
 
+const removeEventFromDB = eventId =>
+  axios.delete(`${baseURL}/events/${eventId}`);
+
 export {
   getFromAPI,
   createProject,
   createAssignment,
   createEvent,
-  removeProjectFromDB
+  removeProjectFromDB,
+  removeEventFromDB
 };

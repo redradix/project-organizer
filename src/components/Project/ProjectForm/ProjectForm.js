@@ -3,12 +3,13 @@ import { connect } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import { withHandlers, compose } from "recompose";
 import { addProject } from "../../../redux/actions/projects";
+import colors from "../../../colors";
 
 const ProjectForm = props => (
   <React.Fragment>
     <h2>Crear Proyecto</h2>
 
-    <Formik initialValues={{}} onSubmit={props.onSubmit}>
+    <Formik onSubmit={props.onSubmit} enableReinitialize={true}>
       {({ isSubmitting }) => (
         <Form>
           Nombre del proyecto:
@@ -41,18 +42,22 @@ const mapDispatchToProps = {
   addProject
 };
 
-const submitHandler = withHandlers({
-  onSubmit: props => (values, actions) => {
-    props.addProject(values);
+const submitHandler = props => (values, actions) => {
+  values.color = getRandomColor();
+  props.addProject(values).then(() => {
     actions.resetForm({});
     actions.setSubmitting(false);
-  }
-});
+  });
+};
+
+const getRandomColor = () => {
+  return colors[Math.floor(Math.random() * colors.length) + 1];
+};
 
 export default compose(
   connect(
     mapStateToProps,
     mapDispatchToProps
   ),
-  submitHandler
+  withHandlers({ onSubmit: submitHandler })
 )(ProjectForm);

@@ -1,19 +1,19 @@
 import { compose, withHandlers, withProps } from "recompose";
 import { connect } from "react-redux";
-import removeProject from "../../../redux/actions/projects/removeProject";
 import ListView from "../../ListView/ListView";
+import removeEvent from "../../../redux/actions/events/removeEvent";
 
-const mapStateToProps = ({ projects }) => ({ items: projects });
+const mapStateToProps = ({ events }) => ({ items: events });
 
 const mapDispatchToProps = {
-  removeProject
+  removeEvent
 };
 
 const deleteHandler = props => event => {
   const target = event.target;
   const id = target.dataset.id;
 
-  props.removeProject(id);
+  props.removeEvent(id);
 };
 
 export default compose(
@@ -21,6 +21,6 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   ),
-  withProps({ mainProperty: "projectName" }),
+  withProps({ mainProperty: "title" }),
   withHandlers({ deleteHandler })
 )(ListView);

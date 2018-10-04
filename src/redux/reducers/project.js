@@ -4,10 +4,6 @@ export default function(state = [], action) {
       return [...action.projects];
     case "ADD_PROJECT":
       return [...state, action.project];
-    case "REMOVE_PROJECT":
-      return state.projects.filter(
-        project => project.title !== action.project.id
-      );
     default:
       return state;
   }

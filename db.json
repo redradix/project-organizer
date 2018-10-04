@@ -1,12 +1,13 @@
 {
   "projects": [
     {
-      "projectName": "ECommece Hugo",
-      "client": "Hugo Boss",
+      "projectName": "Proyecto Ejemplo",
+      "client": "Andres",
       "budget": 1000,
-      "designTime": 10,
-      "developmentSprints": 10,
-      "id": 1
+      "designTime": 20,
+      "developmentSprints": 20,
+      "color": "#ff5722",
+      "id": 2
     }
   ],
   "assignments": [],
@@ -38,18 +39,43 @@
   ],
   "events": [
     {
-      "title": "event1",
-      "start": "2018-10-02"
+      "title": "Proyecto Ejemplo - Alvaro",
+      "start": "2018-10-08",
+      "end": "2018-10-13",
+      "backgroundColor": "#ff5722",
+      "borderColor": "#ff5722",
+      "extra": {
+        "employee": "Alvaro",
+        "project": "Proyecto Ejemplo",
+        "dedicationPercentage": 90
+      },
+      "id": 1
     },
     {
-      "title": "event2",
-      "start": "2018-10-03",
-      "end": "2018-10-07"
+      "title": "Proyecto Ejemplo - Aaron",
+      "start": "2018-10-15",
+      "end": "2018-10-18",
+      "backgroundColor": "#ff5722",
+      "borderColor": "#ff5722",
+      "extra": {
+        "employee": "Aaron",
+        "project": "Proyecto Ejemplo",
+        "dedicationPercentage": 30
+      },
+      "id": 2
     },
     {
-      "title": "event3",
-      "start": "2018-10-06T12:30:00",
-      "allDay": false
+      "title": "Proyecto Ejemplo - Chema",
+      "start": "2018-10-24",
+      "end": "2018-10-28",
+      "backgroundColor": "#ff5722",
+      "borderColor": "#ff5722",
+      "extra": {
+        "employee": "Chema",
+        "project": "Proyecto Ejemplo",
+        "dedicationPercentage": 10
+      },
+      "id": 4
     }
   ]
 }

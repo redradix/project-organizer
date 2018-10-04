@@ -1,9 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
 import { compose, lifecycle } from "recompose";
 import { withRouter } from "react-router-dom";
-
-import getEvents from "../../redux/actions/events/getEvents";
 
 // FullCalendar Libs
 import $ from "jquery";
@@ -13,6 +10,7 @@ import "../../../node_modules/fullcalendar/dist/locale/es";
 // CSS
 import "../../../node_modules/fullcalendar/dist/fullcalendar.min.css";
 import "./Calendar.css";
+import withEvents from "../HOCs/withEvents";
 
 // Component
 const Calendar = props => (
@@ -52,7 +50,6 @@ const createCalendar = props => {
 
 const putLifeCycle = lifecycle({
   componentDidMount() {
-    this.props.getEvents();
     createCalendar(this.props);
   },
   componentDidUpdate() {
@@ -61,17 +58,8 @@ const putLifeCycle = lifecycle({
   }
 });
 
-const mapStateToProps = ({ events }) => ({ events });
-
-const mapDispatchToProps = {
-  getEvents
-};
-
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
+  withEvents,
   putLifeCycle
 )(Calendar);
