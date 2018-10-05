@@ -4,7 +4,7 @@ import CustomSelect from "./CustomSelect/CustomSelect";
 
 const AssignmentForm = props => (
   <React.Fragment>
-    <h2>{props.title}</h2>
+    <h2>{props.formAction} Asignaciones</h2>
 
     <Formik onSubmit={props.onSubmit} initialValues={props.initialValues}>
       {({ isSubmitting, handleChange, values }) => (
@@ -43,8 +43,18 @@ const AssignmentForm = props => (
             />
           ) : null}
           <button type="submit" disabled={isSubmitting}>
-            Crear
+            {props.formAction}
           </button>
+          {props.deleteHandler ? (
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              onClick={props.deleteHandler}
+              data-id={props.initialValues.id}
+            >
+              Eliminar
+            </button>
+          ) : null}
         </Form>
       )}
     </Formik>

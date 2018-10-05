@@ -27,5 +27,5 @@ export default compose(
   withHandlers({ onSubmit: submitHandler }),
   withEmployees,
   withProjects,
-  withProps({ title: "Editar Asignaciones" })
+  withProps({ formAction: "Crear" })
 )(AssignmentForm);

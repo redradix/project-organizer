@@ -56,6 +56,7 @@ const putLifeCycle = lifecycle({
     $("#calendar").fullCalendar("removeEvents");
     $("#calendar").fullCalendar("addEventSource", this.props.events);
   }
+  // will unmount
 });
 
 export default compose(

@@ -3,8 +3,8 @@ import { compose } from "recompose";
 import withEvents from "../HOCs/withEvents";
 import withSelectedEvent from "../HOCs/withSelectedEvent";
 import { Link } from "react-router-dom";
-import EditAssignmentForm from "../Assignments/AssignmentForm/EditAssignmentForm/EditAssignmentForm";
 import moment from "moment";
+import EditAssignmentForm from "./EditAssignmentForm/EditAssignmentForm";
 
 const EventDetails = props => (
   <React.Fragment>

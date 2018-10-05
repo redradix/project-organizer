@@ -23,14 +23,20 @@ const submitHandler = props => values => {
     });
 };
 
+const deleteHandler = props => event => {
+  props
+    .removeEvent(event.target.dataset.id)
+    .then(data => props.history.push("/"));
+};
+
 export default compose(
   withRouter,
   connect(
     mapStateToProps,
     mapDispatchToProps
   ),
-  withHandlers({ onSubmit: submitHandler }),
+  withHandlers({ onSubmit: submitHandler, deleteHandler }),
   withEmployees,
   withProjects,
-  withProps({ title: "Editar Asignaciones" })
+  withProps({ formAction: "Editar" })
 )(AssignmentForm);

@@ -46,7 +46,6 @@
       "id": 6
     }
   ],
-  "assignments": [],
   "employees": [
     "Alex",
     "Alvaro",
@@ -86,28 +85,6 @@
       "id": 3
     },
     {
-      "title": "Proyecto Ejemplo - Helio",
-      "start": "2018-10-22",
-      "end": "2018-10-24",
-      "backgroundColor": "#ff5722",
-      "borderColor": "#ff5722",
-      "employee": "Helio",
-      "project": "Proyecto Ejemplo",
-      "dedicationPercentage": 100,
-      "id": 4
-    },
-    {
-      "title": "Proyecto 2 - Helio",
-      "start": "2018-10-08",
-      "end": "2018-10-11",
-      "backgroundColor": "#2196f3",
-      "borderColor": "#2196f3",
-      "employee": "Helio",
-      "project": "Proyecto 2",
-      "dedicationPercentage": 50,
-      "id": 5
-    },
-    {
       "title": "Projecto 4 - Cristian",
       "start": "2018-10-15",
       "end": "2018-10-18",
@@ -119,17 +96,6 @@
       "id": 7
     },
     {
-      "title": "Projecto 3 - Jacobo",
-      "start": "2018-10-17",
-      "end": "2018-10-20",
-      "backgroundColor": "#f44336",
-      "borderColor": "#f44336",
-      "employee": "Jacobo",
-      "project": "Projecto 3",
-      "dedicationPercentage": 60,
-      "id": 8
-    },
-    {
       "title": "ECommece Hugo - Carlos",
       "start": "2018-10-29",
       "end": "2018-11-01",
@@ -139,6 +105,17 @@
       "project": "ECommece Hugo",
       "dedicationPercentage": 50,
       "id": 9
+    },
+    {
+      "title": "Projecto 3 - Jacobo",
+      "start": "2018-10-17",
+      "end": "2018-10-20",
+      "backgroundColor": "#f44336",
+      "borderColor": "#f44336",
+      "employee": "Jacobo",
+      "project": "Projecto 3",
+      "dedicationPercentage": 60,
+      "id": 10
     }
   ]
 }
