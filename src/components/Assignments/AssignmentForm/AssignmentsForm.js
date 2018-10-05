@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import CustomSelect from "./CustomSelect/CustomSelect";
+import PropTypes from "prop-types";
 
 const AssignmentForm = props => (
   <React.Fragment>
@@ -60,5 +61,14 @@ const AssignmentForm = props => (
     </Formik>
   </React.Fragment>
 );
+
+AssignmentForm.propTypes = {
+  formAction: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  employees: PropTypes.array.isRequired,
+  projects: PropTypes.array.isRequired,
+  initialValues: PropTypes.object,
+  deleteHandler: PropTypes.func
+};
 
 export default AssignmentForm;

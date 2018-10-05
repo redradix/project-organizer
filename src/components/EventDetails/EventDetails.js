@@ -5,6 +5,7 @@ import withSelectedEvent from "../HOCs/withSelectedEvent";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import EditAssignmentForm from "./EditAssignmentForm/EditAssignmentForm";
+import PropTypes from "prop-types";
 
 const EventDetails = props => (
   <React.Fragment>
@@ -18,14 +19,15 @@ const EventDetails = props => (
         <p>Fecha Fin: {props.event.end}</p>
         <p>Porcentaje Dedicacion: {props.event.dedicationPercentage}</p>
 
-        <EditAssignmentForm
-          events={props.events}
-          initialValues={buildInitialValues(props.event)}
-        />
+        <EditAssignmentForm initialValues={buildInitialValues(props.event)} />
       </React.Fragment>
     ) : null}
   </React.Fragment>
 );
+
+EventDetails.propTypes = {
+  event: PropTypes.object
+};
 
 const buildInitialValues = event => {
   const { start, end, employee, project, dedicationPercentage, id } = event;

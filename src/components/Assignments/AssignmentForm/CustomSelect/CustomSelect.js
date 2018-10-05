@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const CustomSelect = props => (
   <React.Fragment>
@@ -16,5 +17,12 @@ const CustomSelect = props => (
     </select>
   </React.Fragment>
 );
+
+CustomSelect.propTypes = {
+  selectName: PropTypes.string.isRequired,
+  changeHandler: PropTypes.func.isRequired,
+  items: PropTypes.array.isRequired,
+  value: PropTypes.string
+};
 
 export default CustomSelect;

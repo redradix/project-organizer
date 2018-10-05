@@ -4,6 +4,7 @@ import { Formik, Form, Field } from "formik";
 import { withHandlers, compose } from "recompose";
 import addProject from "../../../redux/actions/projects/addProject";
 import getRandomColor from "../../../colors";
+import PropTypes from "prop-types";
 
 const ProjectForm = props => (
   <React.Fragment>
@@ -35,6 +36,10 @@ const ProjectForm = props => (
     </Formik>
   </React.Fragment>
 );
+
+ProjectForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired
+};
 
 const mapStateToProps = ({ projects }) => ({ projects });
 
