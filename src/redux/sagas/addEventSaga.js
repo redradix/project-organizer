@@ -30,11 +30,13 @@ function* getProjectColor(projectName) {
 
 function* addEvent(action) {
   try {
-    const formatedEvent = yield call(formatEvent, action.event);
+    const formatedEvent = yield call(formatEvent, action.payload);
     const response = yield call(createEvent, formatedEvent);
 
     yield put({ type: "ADD_EVENT", event: response.data });
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 function* addEventSaga() {

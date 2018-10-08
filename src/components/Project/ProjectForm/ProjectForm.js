@@ -47,12 +47,11 @@ const mapDispatchToProps = {
   addProject
 };
 
-const submitHandler = props => (values, actions) => {
+const submitHandler = props => async (values, actions) => {
   values.color = getRandomColor();
-  props.addProject(values).then(() => {
-    actions.resetForm({});
-    actions.setSubmitting(false);
-  });
+  await props.addProject(values);
+  actions.resetForm({});
+  actions.setSubmitting(false);
 };
 
 export default compose(

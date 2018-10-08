@@ -36,12 +36,7 @@ const AssignmentForm = props => (
           <Field type="number" name="dedicationPercentage" />
           <br />
           {props.initialValues ? (
-            <input
-              type="hidden"
-              name="id"
-              value={props.initialValues.id}
-              changeHandler={handleChange}
-            />
+            <input type="hidden" name="id" value={props.initialValues.id} />
           ) : null}
           <button type="submit" disabled={isSubmitting}>
             {props.formAction}

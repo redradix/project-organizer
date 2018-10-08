@@ -13,9 +13,7 @@ const mapDispatchToProps = {
 };
 
 const submitHandler = props => values => {
-  props.addEvent(values).then(() => {
-    props.history.push("/");
-  });
+  addEvent(values);
 };
 
 export default compose(
