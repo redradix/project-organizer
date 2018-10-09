@@ -1,9 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Formik, Form, Field } from 'formik'
-import { withHandlers, compose } from 'recompose'
-import addProject from '../../../redux/actions/projects/addProject'
-import getRandomColor from '../../../colors'
 import PropTypes from 'prop-types'
 
 const ProjectForm = props => (
@@ -41,15 +37,4 @@ ProjectForm.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
 
-const mapStateToProps = ({ projects }) => ({ projects })
-
-const submitHandler = props => values => {
-  values.color = getRandomColor()
-  addProject(values)
-  props.history.push('/')
-}
-
-export default compose(
-  connect(mapStateToProps),
-  withHandlers({ onSubmit: submitHandler })
-)(ProjectForm)
+export default ProjectForm

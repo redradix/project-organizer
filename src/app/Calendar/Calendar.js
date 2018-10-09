@@ -1,26 +1,15 @@
-import React from 'react'
-import { compose, lifecycle } from 'recompose'
+import { compose, lifecycle, withProps } from 'recompose'
 import { withRouter } from 'react-router-dom'
+import { withAssignments } from '../../services/assignments/hocs'
 
 // FullCalendar Libs
 import $ from 'jquery'
 import 'fullcalendar'
 import '../../../node_modules/fullcalendar/dist/locale/es'
-
-// CSS
-import '../../../node_modules/fullcalendar/dist/fullcalendar.min.css'
-import './Calendar.css'
-import withEvents from '../HOCs/withEvents'
-
-// Component
-const Calendar = props => (
-  <div>
-    <div id="calendar" />
-  </div>
-)
+import Calendar from '../../ui/views/Calendar'
 
 const createCalendar = props => {
-  $('#calendar').fullCalendar({
+  $(`#${props.id}`).fullCalendar({
     locale: 'es',
     themeSystem: 'standard',
     customButtons: {
@@ -43,7 +32,7 @@ const createCalendar = props => {
       right: 'crearProyecto, crearAsignacion'
     },
     eventClick: calEvent => {
-      props.history.push(`/event/${calEvent.id}`)
+      props.history.push(`/assignment/${calEvent.id}`)
     }
   })
 }
@@ -61,6 +50,7 @@ const putLifeCycle = lifecycle({
 
 export default compose(
   withRouter,
-  withEvents,
+  withProps({ id: 'myCalendar' }),
+  withAssignments(),
   putLifeCycle
 )(Calendar)

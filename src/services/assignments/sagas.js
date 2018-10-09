@@ -1,5 +1,5 @@
 import { put, call, all, takeLatest } from 'redux-saga/effects'
-import { getFromAPI, createEvent, removeEventFromDB } from '../../../api'
+import { getFromAPI, createEvent, removeEventFromDB } from '../api'
 import { formatEvent } from './utils'
 import {
   ADD_ASSIGNMENT_REQUEST,

@@ -1,4 +1,4 @@
-import store from '../../store'
+import { store } from '../../app/App'
 import {
   ADD_PROJECT_REQUEST,
   GET_PROJECT_REQUEST,

@@ -1,13 +1,13 @@
 import { compose, withHandlers, withProps } from 'recompose'
 import { connect } from 'react-redux'
-import ListView from '../../ListView/ListView'
-import removeEvent from '../../../redux/actions/events/removeEvent'
+import ListView from '../../ui/ListView'
+import { removeAssignment } from '../../services/assignments/actions'
 
 const mapStateToProps = ({ events }) => ({ items: events })
 
 const deleteHandler = props => id => {
   return function () {
-    removeEvent(id)
+    removeAssignment(id)
   }
 }
 

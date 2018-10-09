@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
-import CustomSelect from './CustomSelect/CustomSelect'
 import PropTypes from 'prop-types'
+import CustomSelect from '../inputs/CustomSelect'
 
 const AssignmentForm = props => (
   <React.Fragment>

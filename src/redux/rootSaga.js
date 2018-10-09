@@ -1,4 +1,4 @@
-import { createSagaMiddleware } from 'redux-saga'
+import createSagaMiddleware from 'redux-saga'
 import { all, spawn, call } from 'redux-saga/effects'
 import assignmentSagas from '../services/assignments/sagas'
 import projectSagas from '../services/projects/sagas'

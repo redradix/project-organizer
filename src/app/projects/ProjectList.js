@@ -1,9 +1,7 @@
 import { compose, withHandlers, withProps } from 'recompose'
-import { connect } from 'react-redux'
-import removeProject from '../../../redux/actions/projects/removeProject'
-import ListView from '../../ListView/ListView'
-
-const mapStateToProps = ({ projects }) => ({ items: projects })
+import { withProjects } from '../../services/projects/hocs'
+import { removeProject } from '../../services/projects/actions'
+import ListView from '../../ui/ListView'
 
 const deleteHandler = props => id => {
   return function () {
@@ -12,7 +10,7 @@ const deleteHandler = props => id => {
 }
 
 export default compose(
-  connect(mapStateToProps),
+  withProjects(),
   withProps({ mainProperty: 'projectName' }),
   withHandlers({ deleteHandler })
 )(ListView)

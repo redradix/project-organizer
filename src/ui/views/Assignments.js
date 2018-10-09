@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import AssignmentList from './AssignmentList/AssignmentList'
-import withEvents from '../HOCs/withEvents'
-import CreateAssignmentForm from './AssignmentForm/CreateAssignmentForm/CreateAssignmentForm'
+import CreateAssignmentForm from '../../app/assignments/CreateAssignmentForm'
+import AssignmentList from '../../app/assignments/AssignmentList'
 
 const Assignments = props => (
   <React.Fragment>
@@ -18,4 +17,4 @@ Assignments.propTypes = {
   events: PropTypes.array.isRequired
 }
 
-export default withEvents(Assignments)
+export default Assignments

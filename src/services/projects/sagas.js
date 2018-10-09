@@ -1,5 +1,5 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects'
-import { getFromAPI, createProject, removeProjectFromDB } from '../../../api'
+import { getFromAPI, createProject, removeProjectFromDB } from '../api'
 import {
   ADD_PROJECT_REQUEST,
   GET_PROJECT_REQUEST,

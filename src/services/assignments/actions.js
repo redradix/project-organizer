@@ -1,4 +1,5 @@
-import store from '../../redux/store'
+import { store } from '../../app/App'
+
 import {
   ADD_ASSIGNMENT_REQUEST,
   EDIT_ASSIGNMENT_REQUEST,
@@ -6,18 +7,18 @@ import {
   REMOVE_ASSIGNMENT_REQUEST
 } from './action-types'
 
-export function addEvent (event) {
+export function addAssignment (event) {
   return store.dispatch({ type: ADD_ASSIGNMENT_REQUEST, payload: event })
 }
 
-export function editEvent (event) {
+export function editAssignment (event) {
   return store.dispatch({ type: EDIT_ASSIGNMENT_REQUEST, payload: event })
 }
 
-export function getEvents () {
+export function getAssignments () {
   return store.dispatch({ type: GET_ASSIGNMENTS_REQUEST })
 }
 
-export default function removeEvent (eventId) {
+export function removeAssignment (eventId) {
   return store.dispatch({ type: REMOVE_ASSIGNMENT_REQUEST, payload: eventId })
 }
