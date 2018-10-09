@@ -1,13 +1,13 @@
-import { compose, withState, lifecycle } from "recompose";
-import { getFromAPI } from "../../api";
+import { compose, withState, lifecycle } from 'recompose'
+import { getFromAPI } from '../../api'
 
 const withProjects = compose(
-  withState("projects", "setProjects", []),
+  withState('projects', 'setProjects', []),
   lifecycle({
-    componentDidMount() {
-      getFromAPI("projects").then(({ data }) => this.props.setProjects(data));
+    componentDidMount () {
+      getFromAPI('projects').then(({ data }) => this.props.setProjects(data))
     }
   })
-);
+)
 
-export default withProjects;
+export default withProjects

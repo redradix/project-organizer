@@ -1,7 +1,7 @@
-import React from "react";
-import { Formik, Form, Field } from "formik";
-import CustomSelect from "./CustomSelect/CustomSelect";
-import PropTypes from "prop-types";
+import React from 'react'
+import { Formik, Form, Field } from 'formik'
+import CustomSelect from './CustomSelect/CustomSelect'
+import PropTypes from 'prop-types'
 
 const AssignmentForm = props => (
   <React.Fragment>
@@ -35,9 +35,6 @@ const AssignmentForm = props => (
           Porcentaje de decicacion:
           <Field type="number" name="dedicationPercentage" />
           <br />
-          {props.initialValues ? (
-            <input type="hidden" name="id" value={props.initialValues.id} />
-          ) : null}
           <button type="submit" disabled={isSubmitting}>
             {props.formAction}
           </button>
@@ -55,7 +52,7 @@ const AssignmentForm = props => (
       )}
     </Formik>
   </React.Fragment>
-);
+)
 
 AssignmentForm.propTypes = {
   formAction: PropTypes.string.isRequired,
@@ -64,6 +61,6 @@ AssignmentForm.propTypes = {
   projects: PropTypes.array.isRequired,
   initialValues: PropTypes.object,
   deleteHandler: PropTypes.func
-};
+}
 
-export default AssignmentForm;
+export default AssignmentForm

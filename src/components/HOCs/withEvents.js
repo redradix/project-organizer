@@ -1,23 +1,16 @@
-import { compose, lifecycle } from "recompose";
-import { connect } from "react-redux";
-import getEvents from "../../redux/actions/events/getEvents";
+import { compose, lifecycle } from 'recompose'
+import { connect } from 'react-redux'
+import getEvents from '../../redux/actions/events/getEvents'
 
-const mapStateToProps = ({ events }) => ({ events });
-
-const mapDispatchToProps = {
-  getEvents
-};
+const mapStateToProps = ({ events }) => ({ events })
 
 const withEvents = compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
+  connect(mapStateToProps),
   lifecycle({
-    componentDidMount() {
-      this.props.getEvents();
+    componentDidMount () {
+      getEvents()
     }
   })
-);
+)
 
-export default withEvents;
+export default withEvents

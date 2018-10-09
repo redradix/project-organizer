@@ -19,15 +19,6 @@
       "id": 3
     },
     {
-      "projectName": "Projecto 3",
-      "client": "example",
-      "budget": 100,
-      "designTime": 1001,
-      "developmentSprints": 10,
-      "color": "#f44336",
-      "id": 4
-    },
-    {
       "projectName": "Projecto 4",
       "client": "Andres",
       "budget": 90,
@@ -53,15 +44,6 @@
       "developmentSprints": 10,
       "color": "#388e3c",
       "id": 7
-    },
-    {
-      "projectName": "Hwkk",
-      "client": "idhskfjba",
-      "budget": 100,
-      "designTime": 100,
-      "developmentSprints": 102348,
-      "color": "#f44336",
-      "id": 8
     }
   ],
   "employees": [
@@ -92,28 +74,6 @@
   ],
   "events": [
     {
-      "title": "Proyecto Ejemplo - Alex",
-      "start": "2018-10-08",
-      "end": "2018-10-13",
-      "backgroundColor": "#ff5722",
-      "borderColor": "#ff5722",
-      "employee": "Alex",
-      "project": "Proyecto Ejemplo",
-      "dedicationPercentage": 100,
-      "id": 3
-    },
-    {
-      "title": "Projecto 4 - Cristian",
-      "start": "2018-10-15",
-      "end": "2018-10-18",
-      "backgroundColor": "#388e3c",
-      "borderColor": "#388e3c",
-      "employee": "Cristian",
-      "project": "Projecto 4",
-      "dedicationPercentage": 30,
-      "id": 7
-    },
-    {
       "title": "ECommece Hugo - Carlos",
       "start": "2018-10-29",
       "end": "2018-11-01",
@@ -125,28 +85,6 @@
       "id": 9
     },
     {
-      "title": "Projecto 3 - Jacobo",
-      "start": "2018-10-17",
-      "end": "2018-10-20",
-      "backgroundColor": "#f44336",
-      "borderColor": "#f44336",
-      "employee": "Jacobo",
-      "project": "Projecto 3",
-      "dedicationPercentage": 60,
-      "id": 10
-    },
-    {
-      "title": "Proyecto 2 - Dani",
-      "start": "2018-10-17",
-      "end": "2018-10-21",
-      "backgroundColor": "#2196f3",
-      "borderColor": "#2196f3",
-      "employee": "Dani",
-      "project": "Proyecto 2",
-      "dedicationPercentage": 30,
-      "id": 11
-    },
-    {
       "title": "Proyecto Ejemplo - Dani",
       "start": "2018-10-08",
       "end": "2018-10-11",
@@ -156,6 +94,50 @@
       "project": "Proyecto Ejemplo",
       "dedicationPercentage": 10,
       "id": 12
+    },
+    {
+      "title": "Projecto 4 - Helio",
+      "start": "2018-10-15",
+      "end": "2018-10-19",
+      "backgroundColor": "#388e3c",
+      "borderColor": "#388e3c",
+      "employee": "Helio",
+      "project": "Projecto 4",
+      "dedicationPercentage": 20,
+      "id": 14
+    },
+    {
+      "title": "Proyecto 2 - Helio",
+      "start": "2018-10-17",
+      "end": "2018-10-20",
+      "backgroundColor": "#2196f3",
+      "borderColor": "#2196f3",
+      "employee": "Helio",
+      "project": "Proyecto 2",
+      "dedicationPercentage": 30,
+      "id": 16
+    },
+    {
+      "title": "ECommece Hugo - Cynthia",
+      "start": "2018-10-17",
+      "end": "2018-10-20",
+      "backgroundColor": "#9c27b0",
+      "borderColor": "#9c27b0",
+      "employee": "Cynthia",
+      "project": "ECommece Hugo",
+      "dedicationPercentage": 20,
+      "id": 17
+    },
+    {
+      "title": "Proyecto Ejemplo - Patri",
+      "start": "2018-10-22",
+      "end": "2018-10-27",
+      "backgroundColor": "#ff5722",
+      "borderColor": "#ff5722",
+      "employee": "Patri",
+      "project": "Proyecto Ejemplo",
+      "dedicationPercentage": 30,
+      "id": 18
     }
   ]
 }

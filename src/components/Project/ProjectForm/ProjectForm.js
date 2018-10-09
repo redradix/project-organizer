@@ -1,10 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Formik, Form, Field } from "formik";
-import { withHandlers, compose } from "recompose";
-import addProject from "../../../redux/actions/projects/addProject";
-import getRandomColor from "../../../colors";
-import PropTypes from "prop-types";
+import React from 'react'
+import { connect } from 'react-redux'
+import { Formik, Form, Field } from 'formik'
+import { withHandlers, compose } from 'recompose'
+import addProject from '../../../redux/actions/projects/addProject'
+import getRandomColor from '../../../colors'
+import PropTypes from 'prop-types'
 
 const ProjectForm = props => (
   <React.Fragment>
@@ -35,29 +35,21 @@ const ProjectForm = props => (
       )}
     </Formik>
   </React.Fragment>
-);
+)
 
 ProjectForm.propTypes = {
   onSubmit: PropTypes.func.isRequired
-};
+}
 
-const mapStateToProps = ({ projects }) => ({ projects });
+const mapStateToProps = ({ projects }) => ({ projects })
 
-const mapDispatchToProps = {
-  addProject
-};
-
-const submitHandler = props => async (values, actions) => {
-  values.color = getRandomColor();
-  await props.addProject(values);
-  actions.resetForm({});
-  actions.setSubmitting(false);
-};
+const submitHandler = props => values => {
+  values.color = getRandomColor()
+  addProject(values)
+  props.history.push('/')
+}
 
 export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
+  connect(mapStateToProps),
   withHandlers({ onSubmit: submitHandler })
-)(ProjectForm);
+)(ProjectForm)

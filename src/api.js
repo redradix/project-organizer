@@ -1,19 +1,19 @@
-import axios from "axios";
+import axios from 'axios'
 
-const baseURL = "http://localhost:5000";
+const baseURL = 'http://localhost:5000'
 
-const getFromAPI = concept => axios.get(`${baseURL}/${concept}`);
+const getFromAPI = concept => axios.get(`${baseURL}/${concept}`)
 
-const createProject = project => axios.post(`${baseURL}/projects`, project);
+const createProject = project => axios.post(`${baseURL}/projects`, project)
 const createAssignment = assignment =>
-  axios.post(`${baseURL}/assignments`, assignment);
-const createEvent = event => axios.post(`${baseURL}/events`, event);
+  axios.post(`${baseURL}/assignments`, assignment)
+const createEvent = event => axios.post(`${baseURL}/events`, event)
 
 const removeProjectFromDB = projectId =>
-  axios.delete(`${baseURL}/projects/${projectId}`);
+  axios.delete(`${baseURL}/projects/${projectId}`)
 
 const removeEventFromDB = eventId =>
-  axios.delete(`${baseURL}/events/${eventId}`);
+  axios.delete(`${baseURL}/events/${eventId}`)
 
 export {
   getFromAPI,
@@ -22,4 +22,4 @@ export {
   createEvent,
   removeProjectFromDB,
   removeEventFromDB
-};
+}

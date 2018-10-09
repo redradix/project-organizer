@@ -1,20 +1,21 @@
-import AssignmentForm from "../AssignmentsForm";
-import { compose, withHandlers, withProps } from "recompose";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import withEmployees from "../../../HOCs/withEmployees";
-import withProjects from "../../../HOCs/withProjects";
-import addEvent from "../../../../redux/actions/events/addEvent";
+import AssignmentForm from '../AssignmentsForm'
+import { compose, withHandlers, withProps } from 'recompose'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import withEmployees from '../../../HOCs/withEmployees'
+import withProjects from '../../../HOCs/withProjects'
+import addEvent from '../../../../redux/actions/events/addEvent'
 
-const mapStateToProps = ({ projects }) => ({ projects });
+const mapStateToProps = ({ projects }) => ({ projects })
 
 const mapDispatchToProps = {
   addEvent
-};
+}
 
 const submitHandler = props => values => {
-  addEvent(values);
-};
+  addEvent(values)
+  props.history.push('/')
+}
 
 export default compose(
   withRouter,
@@ -25,5 +26,5 @@ export default compose(
   withHandlers({ onSubmit: submitHandler }),
   withEmployees,
   withProjects,
-  withProps({ formAction: "Crear" })
-)(AssignmentForm);
+  withProps({ formAction: 'Crear' })
+)(AssignmentForm)

@@ -1,42 +1,29 @@
-import removeEvent from "../../../redux/actions/events/removeEvent";
-import addEvent from "../../../redux/actions/events/addEvent";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { compose, withHandlers, withProps } from "recompose";
-import withEmployees from "../../HOCs/withEmployees";
-import withProjects from "../../HOCs/withProjects";
-import AssignmentForm from "../../Assignments/AssignmentForm/AssignmentsForm";
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { compose, withHandlers, withProps } from 'recompose'
+import withEmployees from '../../HOCs/withEmployees'
+import withProjects from '../../HOCs/withProjects'
+import AssignmentForm from '../../Assignments/AssignmentForm/AssignmentsForm'
+import editEvent from '../../../redux/actions/events/editEvent'
+import removeEvent from '../../../redux/actions/events/removeEvent'
 
-const mapStateToProps = ({ projects }) => ({ projects });
-
-const mapDispatchToProps = {
-  removeEvent,
-  addEvent
-};
+const mapStateToProps = ({ projects }) => ({ projects })
 
 const submitHandler = props => values => {
-  props
-    .removeEvent(values.id)
-    .then(() => props.addEvent(values))
-    .then(() => {
-      props.history.push("/");
-    });
-};
+  editEvent(values)
+}
 
 const deleteHandler = props => event => {
-  props
-    .removeEvent(event.target.dataset.id)
-    .then(data => props.history.push("/"));
-};
+  event.preventDefault()
+  removeEvent(props.initialValues.id)
+  props.history.push('/')
+}
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
+  connect(mapStateToProps),
   withHandlers({ onSubmit: submitHandler, deleteHandler }),
   withEmployees,
   withProjects,
-  withProps({ formAction: "Editar" })
-)(AssignmentForm);
+  withProps({ formAction: 'Editar' })
+)(AssignmentForm)

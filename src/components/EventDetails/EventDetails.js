@@ -1,11 +1,11 @@
-import React from "react";
-import { compose } from "recompose";
-import withEvents from "../HOCs/withEvents";
-import withSelectedEvent from "../HOCs/withSelectedEvent";
-import { Link } from "react-router-dom";
-import moment from "moment";
-import EditAssignmentForm from "./EditAssignmentForm/EditAssignmentForm";
-import PropTypes from "prop-types";
+import React from 'react'
+import { compose } from 'recompose'
+import withEvents from '../HOCs/withEvents'
+import withSelectedEvent from '../HOCs/withSelectedEvent'
+import { Link } from 'react-router-dom'
+import moment from 'moment'
+import EditAssignmentForm from './EditAssignmentForm/EditAssignmentForm'
+import PropTypes from 'prop-types'
 
 const EventDetails = props => (
   <React.Fragment>
@@ -23,18 +23,18 @@ const EventDetails = props => (
       </React.Fragment>
     ) : null}
   </React.Fragment>
-);
+)
 
 EventDetails.propTypes = {
   event: PropTypes.object
-};
+}
 
 const buildInitialValues = event => {
-  const { start, end, employee, project, dedicationPercentage, id } = event;
+  const { start, end, employee, project, dedicationPercentage, id } = event
 
   const toDate = moment(end)
-    .subtract(1, "days")
-    .format("YYYY-MM-DD");
+    .subtract(1, 'days')
+    .format('YYYY-MM-DD')
 
   return {
     id,
@@ -43,10 +43,10 @@ const buildInitialValues = event => {
     dedicationPercentage,
     fromDate: start,
     toDate
-  };
-};
+  }
+}
 
 export default compose(
   withEvents,
   withSelectedEvent
-)(EventDetails);
+)(EventDetails)
