@@ -7,9 +7,10 @@ import {
   REMOVE_ASSIGNMENT_REQUEST
 } from './action-types'
 
-function * addEventWorker (action) {
+function * addEventWorker (history, action) {
   try {
     yield call(APIAssignments.create, action.payload)
+    history.push('/')
   } catch (err) {
     console.log(err)
   }
@@ -27,19 +28,20 @@ function * fetchEvents () {
   yield call(APIAssignments.fetchAll)
 }
 
-function * removeEventWorker (action) {
+function * removeEventWorker (history, action) {
   try {
     yield call(APIAssignments.remove, action.payload)
+    history.push('/')
   } catch (err) {
     console.error(err)
   }
 }
 
-export default function * () {
+export default function * (history) {
   yield all([
-    takeLatest(ADD_ASSIGNMENT_REQUEST, addEventWorker),
-    takeLatest(EDIT_ASSIGNMENT_REQUEST, editEventWorker),
+    takeLatest(ADD_ASSIGNMENT_REQUEST, addEventWorker, history),
+    takeLatest(EDIT_ASSIGNMENT_REQUEST, editEventWorker, history),
     takeLatest(GET_ASSIGNMENTS_REQUEST, fetchEvents),
-    takeLatest(REMOVE_ASSIGNMENT_REQUEST, removeEventWorker)
+    takeLatest(REMOVE_ASSIGNMENT_REQUEST, removeEventWorker, history)
   ])
 }

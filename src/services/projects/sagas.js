@@ -18,14 +18,15 @@ function * getProjectsWorker () {
   yield call(APIProjects.fetchAll)
 }
 
-function * removeProjectWorker (action) {
+function * removeProjectWorker (history, action) {
   yield call(APIProjects.remove, action.payload)
+  history.push('/')
 }
 
-export default function * () {
+export default function * (history) {
   yield all([
-    takeLatest(ADD_PROJECT_REQUEST, addProjectWorker),
+    takeLatest(ADD_PROJECT_REQUEST, addProjectWorker, history),
     takeLatest(GET_PROJECT_REQUEST, getProjectsWorker),
-    takeLatest(REMOVE_PROJECT_REQUEST, removeProjectWorker)
+    takeLatest(REMOVE_PROJECT_REQUEST, removeProjectWorker, history)
   ])
 }
