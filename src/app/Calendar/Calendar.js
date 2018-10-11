@@ -37,20 +37,27 @@ const createCalendar = props => {
   })
 }
 
-const putLifeCycle = lifecycle({
-  componentDidMount () {
-    createCalendar(this.props)
-  },
+const createCalendarOnMount = lifecycle({
   componentDidUpdate () {
-    $('#calendar').fullCalendar('removeEvents')
-    $('#calendar').fullCalendar('addEventSource', this.props.events)
+    if (!this.props.loading) {
+      createCalendar(this.props)
+      $(`#${this.props.id}`).fullCalendar('removeEvents')
+      $(`#${this.props.id}`).fullCalendar(
+        'addEventSource',
+        this.props.assignments
+      )
+    }
   }
   // will unmount
 })
+
+// const spinner = fn => branch(fn, renderComponent(<Spinner />)
 
 export default compose(
   withRouter,
   withProps({ id: 'myCalendar' }),
   withAssignments(),
-  putLifeCycle
+  // Branch
+  // spinner(props => !!props.loading)
+  createCalendarOnMount
 )(Calendar)

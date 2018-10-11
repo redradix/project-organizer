@@ -1,23 +1,20 @@
 import { compose, withHandlers, withProps } from 'recompose'
 import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { addAssignment } from '../../services/assignments/actions'
 import AssignmentForm from '../../ui/forms/AssignmentsForm'
 import { withEmployees } from '../../services/employees/hocs'
 import { withProjects } from '../../services/projects/hocs'
-
-const mapStateToProps = ({ projects }) => ({ projects })
+import { formatAssignment } from '../../services/assignments/utils'
 
 const submitHandler = props => values => {
-  addAssignment(values)
-  props.history.push('/')
+  const assignmentFormated = formatAssignment(values, props.projects)
+  addAssignment(assignmentFormated)
 }
 
 export default compose(
   withRouter,
-  connect(mapStateToProps),
+  withEmployees(),
+  withProjects(),
   withHandlers({ onSubmit: submitHandler }),
-  withEmployees,
-  withProjects,
   withProps({ formAction: 'Crear' })
 )(AssignmentForm)

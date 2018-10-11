@@ -1,5 +1,4 @@
 import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
 import {
   editAssignment,
   removeAssignment
@@ -8,11 +7,11 @@ import { compose, withHandlers, withProps } from 'recompose'
 import { withEmployees } from '../../services/employees/hocs'
 import { withProjects } from '../../services/projects/hocs'
 import AssignmentForm from '../../ui/forms/AssignmentsForm'
-
-const mapStateToProps = ({ projects }) => ({ projects })
+import { formatAssignment } from '../../services/assignments/utils'
 
 const submitHandler = props => values => {
-  editAssignment(values)
+  const formatedAssignment = formatAssignment(values, props.projects)
+  editAssignment(formatedAssignment)
 }
 
 const deleteHandler = props => event => {
@@ -22,9 +21,8 @@ const deleteHandler = props => event => {
 
 export default compose(
   withRouter,
-  connect(mapStateToProps),
+  withProjects(),
+  withEmployees(),
   withHandlers({ onSubmit: submitHandler, deleteHandler }),
-  withEmployees,
-  withProjects,
   withProps({ formAction: 'Editar' })
 )(AssignmentForm)

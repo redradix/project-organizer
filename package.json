@@ -9,7 +9,9 @@
     "fullcalendar": "^3.9.0",
     "jquery": "^3.3.1",
     "moment": "^2.22.2",
+    "normalizr": "^3.3.0",
     "prop-types": "^15.6.2",
+    "ramda": "^0.25.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
@@ -19,7 +21,8 @@
     "reduken": "^1.0.21",
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^3.4.10"
   },
   "scripts": {
     "start": "react-scripts start",

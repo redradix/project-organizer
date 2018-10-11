@@ -2,8 +2,8 @@ import { compose, withProps } from 'recompose'
 import moment from 'moment'
 import AssignmentDetails from '../../ui/views/AssignmentsDetails'
 import {
-  withSelectedAssignment,
-  withAssignments
+  withAssignments,
+  withSelectedAssignment
 } from '../../services/assignments/hocs'
 
 const buildInitialValues = event => {
@@ -25,6 +25,6 @@ const buildInitialValues = event => {
 
 export default compose(
   withAssignments(),
-  withProps({ buildInitialValues }),
-  withSelectedAssignment()
+  withSelectedAssignment(),
+  withProps({ buildInitialValues })
 )(AssignmentDetails)

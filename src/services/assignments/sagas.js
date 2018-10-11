@@ -1,6 +1,5 @@
 import { put, call, all, takeLatest } from 'redux-saga/effects'
-import { getFromAPI, createEvent, removeEventFromDB } from '../api'
-import { formatEvent } from './utils'
+import APIAssignments from './api'
 import {
   ADD_ASSIGNMENT_REQUEST,
   EDIT_ASSIGNMENT_REQUEST,
@@ -10,10 +9,7 @@ import {
 
 function * addEventWorker (action) {
   try {
-    const formatedEvent = yield call(formatEvent, action.payload)
-    const response = yield call(createEvent, formatedEvent)
-
-    yield put({ type: 'ADD_ASSIGNMENT', event: response.data })
+    yield call(APIAssignments.create, action.payload)
   } catch (err) {
     console.log(err)
   }
@@ -28,16 +24,12 @@ function * editEventWorker (action) {
 }
 
 function * fetchEvents () {
-  const response = yield call(getFromAPI, 'events')
-  const events = response.data
-
-  yield put({ type: 'INIT_ASSIGNMENTS', events })
+  yield call(APIAssignments.fetchAll)
 }
 
 function * removeEventWorker (action) {
   try {
-    yield call(removeEventFromDB, action.payload)
-    yield put({ type: GET_ASSIGNMENTS_REQUEST })
+    yield call(APIAssignments.remove, action.payload)
   } catch (err) {
     console.error(err)
   }

@@ -1,13 +1,18 @@
 import moment from 'moment'
-import { getFromAPI } from '../api'
 
-export function * formatEvent (event) {
-  const { employee, project, fromDate, toDate, dedicationPercentage } = event
+export function formatAssignment (assignment, projects) {
+  const {
+    employee,
+    project,
+    fromDate,
+    toDate,
+    dedicationPercentage
+  } = assignment
 
   const end = moment(toDate).add(1, 'days')
-  const color = yield getProjectColor(project)
+  const color = getProjectColor(project, projects)
 
-  return {
+  const result = {
     title: `${project} - ${employee}`,
     start: fromDate,
     end: end.format('YYYY-MM-DD'),
@@ -17,11 +22,15 @@ export function * formatEvent (event) {
     project,
     dedicationPercentage
   }
+
+  if (assignment.id) {
+    result.id = assignment.id
+  }
+
+  return result
 }
 
-export function * getProjectColor (projectName) {
-  const response = yield getFromAPI('projects')
-  const projects = response.data
+export function getProjectColor (projectName, projects) {
   const project = projects.find(value => value.projectName === projectName)
 
   return project.color

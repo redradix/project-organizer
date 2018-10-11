@@ -15,7 +15,7 @@ export function editAssignment (event) {
   return store.dispatch({ type: EDIT_ASSIGNMENT_REQUEST, payload: event })
 }
 
-export function getAssignments () {
+export function fetchAssignments () {
   return store.dispatch({ type: GET_ASSIGNMENTS_REQUEST })
 }
 

@@ -6,17 +6,17 @@ import EditAssignmentForm from '../../app/assignments/EditAssignmentForm'
 const AssignmentDetails = props => (
   <React.Fragment>
     <Link to="/">Calendario</Link>
-    {props.event ? (
+    {props.assignment ? (
       <React.Fragment>
-        <h2>{props.event.title}</h2>
-        <p>Empleado: {props.event.employee}</p>
-        <p>Proyecto: {props.event.project}</p>
-        <p>Fecha Inicio: {props.event.start}</p>
-        <p>Fecha Fin: {props.event.end}</p>
-        <p>Porcentaje Dedicacion: {props.event.dedicationPercentage}</p>
+        <h2>{props.assignment.title}</h2>
+        <p>Empleado: {props.assignment.employee}</p>
+        <p>Proyecto: {props.assignment.project}</p>
+        <p>Fecha Inicio: {props.assignment.start}</p>
+        <p>Fecha Fin: {props.assignment.end}</p>
+        <p>Porcentaje Dedicacion: {props.assignment.dedicationPercentage}</p>
 
         <EditAssignmentForm
-          initialValues={props.buildInitialValues(props.event)}
+          initialValues={props.buildInitialValues(props.assignment)}
         />
       </React.Fragment>
     ) : null}
@@ -24,7 +24,7 @@ const AssignmentDetails = props => (
 )
 
 AssignmentDetails.propTypes = {
-  event: PropTypes.object,
+  assignment: PropTypes.object,
   buildInitialValues: PropTypes.func
 }
 

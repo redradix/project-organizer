@@ -1,27 +1,31 @@
 import { compose, lifecycle } from 'recompose'
 import { connect } from 'react-redux'
-import { getAssignments } from './actions'
+import { fetchAssignments } from './actions'
+import {
+  getAssignmentsFromState,
+  isLoadingAssignments,
+  findAssignmentById
+} from './selectors'
 
 export const withSelectedAssignment = () => {
-  const mapStateToProps = ({ events }, ownProps) => ({
-    event: findEventById(events, ownProps)
+  const mapStateToProps = (state, ownProps) => ({
+    assignment: findAssignmentById(state, ownProps.match.params.id)
   })
-
-  const findEventById = (events, props) => {
-    return events.find(value => value.id === parseInt(props.match.params.id))
-  }
 
   return connect(mapStateToProps)
 }
 
 export const withAssignments = () => {
-  const mapStateToProps = ({ events }) => ({ events })
+  const mapStateToProps = state => ({
+    loadingAssignments: isLoadingAssignments(state),
+    assignments: getAssignmentsFromState(state)
+  })
 
   return compose(
     connect(mapStateToProps),
     lifecycle({
       componentDidMount () {
-        getAssignments()
+        fetchAssignments()
       }
     })
   )

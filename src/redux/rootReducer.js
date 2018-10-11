@@ -1,6 +1,7 @@
-import { entities, hash } from 'reduken'
+import { entities, hash, list } from 'reduken'
 
 export default {
   entities,
-  hash
+  hash,
+  list
 }
