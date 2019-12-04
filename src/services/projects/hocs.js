@@ -6,15 +6,15 @@ import { getProjectsFromState, isLoadingProjects } from './selectors'
 export const withProjects = () => {
   const mapStateToProps = state => ({
     projects: getProjectsFromState(state),
-    loadingProjects: isLoadingProjects(state)
+    loadingProjects: isLoadingProjects(state),
   })
 
   return compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps, { getProjects }),
     lifecycle({
-      componentDidMount () {
-        getProjects()
-      }
-    })
+      componentDidMount() {
+        this.props.getProjects()
+      },
+    }),
   )
 }

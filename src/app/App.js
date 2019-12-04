@@ -6,7 +6,7 @@ import Routes from './Routes'
 import createCustomStore from '../redux/customStore'
 
 const history = createBrowserHistory()
-export const store = createCustomStore({}, history)
+const store = createCustomStore({}, history)
 
 const App = props => (
   <Provider store={store}>

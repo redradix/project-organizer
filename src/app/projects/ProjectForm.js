@@ -2,10 +2,14 @@ import { withHandlers, compose } from 'recompose'
 import getRandomColor from '../../colors'
 import ProjectForm from '../../ui/forms/ProjectForm'
 import { addProject } from '../../services/projects/actions'
+import { connect } from 'react-redux'
 
-const submitHandler = props => values => {
-  values.color = getRandomColor()
-  addProject(values)
-}
-
-export default compose(withHandlers({ onSubmit: submitHandler }))(ProjectForm)
+export default compose(
+  connect(null, { addProject }),
+  withHandlers({
+    onSubmit: props => values => {
+      values.color = getRandomColor()
+      props.addProject(values)
+    },
+  }),
+)(ProjectForm)

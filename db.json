@@ -74,59 +74,15 @@
   ],
   "assignments": [
     {
-      "title": "Proyecto Ejemplo - Dani",
-      "start": "2018-10-08",
-      "end": "2018-10-11",
-      "backgroundColor": "#ff5722",
-      "borderColor": "#ff5722",
-      "employee": "Dani",
-      "project": "Proyecto Ejemplo",
-      "dedicationPercentage": 10,
-      "id": 12
-    },
-    {
-      "title": "Proyecto 2 - Patri",
-      "start": "2018-10-22",
-      "end": "2018-10-27",
-      "backgroundColor": "#2196f3",
-      "borderColor": "#2196f3",
-      "employee": "Patri",
-      "project": "Proyecto 2",
-      "dedicationPercentage": 30,
-      "id": 18
-    },
-    {
-      "title": "ECommece Hugo - Dani",
-      "start": "2018-10-11",
-      "end": "2018-10-13",
-      "backgroundColor": "#9c27b0",
-      "borderColor": "#9c27b0",
-      "employee": "Dani",
-      "project": "ECommece Hugo",
-      "dedicationPercentage": 10,
-      "id": 19
-    },
-    {
-      "title": "Projecto 4 - Helio",
-      "start": "2018-10-15",
-      "end": "2018-10-17",
+      "title": "Projecto 4 - Arturo",
+      "start": "2019-12-04",
+      "end": "2019-12-06",
       "backgroundColor": "#388e3c",
       "borderColor": "#388e3c",
-      "employee": "Helio",
+      "employee": "Arturo",
       "project": "Projecto 4",
-      "dedicationPercentage": 20,
-      "id": 14
-    },
-    {
-      "title": "Proyecto 2 - Diana",
-      "start": "2018-10-17",
-      "end": "2018-10-20",
-      "backgroundColor": "#2196f3",
-      "borderColor": "#2196f3",
-      "employee": "Diana",
-      "project": "Proyecto 2",
-      "dedicationPercentage": 40,
-      "id": 23
+      "dedicationPercentage": 23,
+      "id": 1
     }
   ]
 }

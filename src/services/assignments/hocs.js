@@ -4,12 +4,12 @@ import { fetchAssignments } from './actions'
 import {
   getAssignmentsFromState,
   isLoadingAssignments,
-  findAssignmentById
+  findAssignmentById,
 } from './selectors'
 
 export const withSelectedAssignment = () => {
   const mapStateToProps = (state, ownProps) => ({
-    assignment: findAssignmentById(state, ownProps.match.params.id)
+    assignment: findAssignmentById(state, ownProps.match.params.id),
   })
 
   return connect(mapStateToProps)
@@ -18,15 +18,15 @@ export const withSelectedAssignment = () => {
 export const withAssignments = () => {
   const mapStateToProps = state => ({
     loadingAssignments: isLoadingAssignments(state),
-    assignments: getAssignmentsFromState(state)
+    assignments: getAssignmentsFromState(state),
   })
 
   return compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps, { fetchAssignments }),
     lifecycle({
-      componentDidMount () {
-        fetchAssignments()
-      }
-    })
+      componentDidMount() {
+        this.props.fetchAssignments()
+      },
+    }),
   )
 }

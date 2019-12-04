@@ -5,16 +5,20 @@ import AssignmentForm from '../../ui/forms/AssignmentsForm'
 import { withEmployees } from '../../services/employees/hocs'
 import { withProjects } from '../../services/projects/hocs'
 import { formatAssignment } from '../../services/assignments/utils'
-
-const submitHandler = props => values => {
-  const assignmentFormated = formatAssignment(values, props.projects)
-  addAssignment(assignmentFormated)
-}
+import { connect } from 'react-redux'
 
 export default compose(
   withRouter,
+
   withEmployees(),
   withProjects(),
-  withHandlers({ onSubmit: submitHandler }),
-  withProps({ formAction: 'Crear' })
+  connect(null, { addAssignment }),
+
+  withHandlers({
+    onSubmit: props => values => {
+      const assignmentFormated = formatAssignment(values, props.projects)
+      props.addAssignment(assignmentFormated)
+    },
+  }),
+  withProps({ formAction: 'Crear' }),
 )(AssignmentForm)
